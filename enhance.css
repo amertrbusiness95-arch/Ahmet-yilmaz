@@ -164,3 +164,10 @@
   .hero__stage { max-width: min(320px, 100%); overflow: visible; }
   .portrait { inset: 0 !important; width: 100% !important; height: 100% !important; }
 }
+
+/* featured logos on phones: Al Jazeera fills its frame, the rest a step larger */
+@media (max-width: 640px) {
+  .clients__strip.featured .client-logo--aj { padding: 6px 12px !important; }
+  .clients__strip.featured .client-logo--aj img { max-height: 76px !important; height: 76px; }
+  .clients__strip.featured .client-logo img { max-height: 42px !important; }
+}
