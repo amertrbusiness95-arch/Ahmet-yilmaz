@@ -450,3 +450,35 @@ html[lang="ar"] .section__label::before, html[lang="ar"] .section__label::after 
   .marquee { padding: 30px 0 !important; }
   .marquee__track { font-size: clamp(30px, 3.4vw, 54px) !important; }
 }
+
+/* Marquee: both halves are identical and never shrink, so the loop is seamless and nothing overlaps */
+.marquee__track > span { flex: none; }
+.mq { text-shadow: 0 0 calc(var(--lit, 0) * 16px) rgba(0, 224, 255, calc(var(--lit, 0) * 0.85)) !important; }
+
+/* Nav links: frosted glass pills with a shine on hover, like iOS */
+.nav__menu a {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: background 250ms, border-color 250ms, box-shadow 250ms;
+}
+.nav__menu a::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease);
+  pointer-events: none;
+}
+.nav__menu a:hover, .nav__menu a:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 224, 255, 0.18);
+}
+.nav__menu a:hover::before { transform: translateX(120%); }
