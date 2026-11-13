@@ -6,7 +6,7 @@
   const DICT = {
     'AHMET YILMAZ · CREATIVE DIRECTION': 'أحمد يلماز · الإدارة الإبداعية',
     'Work': 'أعمالي', 'About': 'نبذة', 'Capabilities': 'المهارات', 'Experience': 'الخبرة', 'Contact': 'التواصل',
-    'Available · Q3': 'متاح · الربع الثالث',
+    'Available': 'متاح',
     'Live · Istanbul': 'مباشر · إسطنبول',
     'SENIOR GRAPHIC DESIGNER · 10+ YEARS': 'مصمم جرافيك أول · 10+ سنوات',
     'EDITORIAL × NEWS × AI': 'تحرير × أخبار × ذكاء اصطناعي',
@@ -25,8 +25,8 @@
     'Cinematic Posters': 'بوسترات سينمائية', 'AI Direction': 'إخراج بالذكاء الاصطناعي', 'Brand Systems': 'أنظمة الهوية', 'Motion Graphics': 'جرافيك متحرك',
     'About / 01': 'نبذة / 01',
     'A': '',
-    'graphic designer': 'مصمم جرافيك',
-    'with a passion for creativity — always seeking to show more of it with others and partners.': 'شغوف بالإبداع، يسعى دائماً لإظهاره أكثر مع الآخرين والشركاء.',
+    'creative designer': 'مصمم مبدع',
+    'with a passion for creativity.': 'شغوف بالإبداع.',
     'I tell the story': 'أروي القصة', 'before': 'قبل', 'you read the headline.': 'أن تقرأ العنوان.',
     'Senior Graphic Designer with': 'مصمم جرافيك أول بخبرة',
     'in visual communication, specialising in editorial design, news graphics and digital storytelling.': 'في الاتصال البصري، متخصص في التصميم التحريري والجرافيك الإخباري والسرد الرقمي.',
@@ -98,14 +98,13 @@
     'Clients': 'العملاء', '& partners, one visual desk.': 'والشركاء، طاولة بصرية واحدة.',
     'Contact / 06': 'التواصل / 06',
     'Currently booking · Q3 — Q4 2026': 'الحجز متاح · الربع الثالث — الرابع 2026',
-    "Let's make": 'لنصنع', 'the next': 'الغلاف', 'cover': 'القادم', 'together.': 'معاً.',
+    "Let's": 'يلا', 'work': 'نشتغل', 'together.': 'مع بعض.',
     'Email': 'البريد', 'Istanbul': 'إسطنبول', 'Studio': 'الاستوديو',
     'Available remote · GMT+3 · willing to travel for in-newsroom residencies.': 'متاح عن بُعد · GMT+3 · مستعد للسفر للإقامة داخل غرف الأخبار.',
     'Direct': 'مباشر',
     'Reply within 24h, weekdays.': 'الرد خلال 24 ساعة، أيام الأسبوع.',
     '· Ahmet Yilmaz · Senior Graphic Designer': '· أحمد يلماز · مصمم جرافيك أول',
     'Designed in Istanbul · Set in Instrument Serif & Space Grotesk': 'صُمم في إسطنبول · بخطوط Instrument Serif و Space Grotesk',
-    "Let's work together.": 'يلا نشتغل مع بعض.',
     '↑ Top': '↑ للأعلى'
   };
   const ATTRS = {

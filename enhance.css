@@ -411,7 +411,6 @@ html[lang="ar"] .lang-toggle span { font-family: 'Tajawal', sans-serif !importan
 .skill__mono--img img { width: 24px; height: 24px; }
 
 /* Contact lead line */
-.contact__lead { font-family: var(--serif); font-size: 26px; color: var(--cyan); margin: 18px 0 0; }
 
 /* Arabic typesetting: taller lines so letters breathe, no faux spacing */
 html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.35 !important; }
@@ -426,3 +425,28 @@ html[lang="ar"] .section__title em { font-style: normal; }
 /* Arabic: keep numbers with their plus sign in the right place, and drop the decorative rule that clashes with RTL labels */
 html[lang="ar"] .stat .num { direction: ltr; }
 html[lang="ar"] .section__label::before, html[lang="ar"] .section__label::after { display: none !important; }
+
+/* About: the tagline sits under the title, smaller */
+.about__tag { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 26px); line-height: 1.35; color: var(--ink); margin: 18px 0 0; max-width: 34ch; }
+.about__tag em { color: var(--cyan); font-style: normal; }
+
+/* Marquee: every word readable, the one at centre lights up cyan */
+.mq { opacity: 1 !important; }
+.marquee__track span { color: var(--ink); }
+.marquee__track .ghost .mq { -webkit-text-stroke: 1px rgba(255, 255, 255, calc(0.55 + var(--lit, 0) * 0.45)); }
+
+/* Timeline: "Now" sits beside the text on laptops and tablets too, never under it */
+@media (max-width: 1000px) {
+  .tl-item { position: relative; }
+  .tl-item__highlights { position: absolute; top: 28px; inset-inline-end: 18px; }
+}
+
+/* Language switch: a little smaller */
+.lang-toggle { padding: 2px; margin-inline-start: 10px; }
+.lang-toggle span { padding: 4px 9px; font-size: 10px; }
+.lang-toggle span[data-k="ar"] { font-size: 12px; }
+/* Marquee: taller and bigger on laptops so the strip reads clearly, not a thin faint line */
+@media (min-width: 901px) {
+  .marquee { padding: 30px 0 !important; }
+  .marquee__track { font-size: clamp(30px, 3.4vw, 54px) !important; }
+}
