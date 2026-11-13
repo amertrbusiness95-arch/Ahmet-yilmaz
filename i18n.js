@@ -173,6 +173,9 @@
   const attrOrig = new WeakMap();
   const toggle = document.getElementById('langToggle');
 
+  /* Kashida: a tatweel after every kaf that joins to the next letter, so the kaf is drawn out */
+  const stretchKaf = (s) => s.replace(/ك(?=[بتثجحخسشصضطظعغفقكلمنهيئ])/g, 'ك\u0640');
+
   function apply(lang) {
     const ar = lang === 'ar';
     document.documentElement.lang = ar ? 'ar' : 'en';
@@ -185,7 +188,7 @@
       if (Object.prototype.hasOwnProperty.call(DICT, k)) {
         const lead = (src.match(/^\s*/) || [''])[0];
         const trail = (src.match(/\s*$/) || [''])[0];
-        t.nodeValue = DICT[k] === '' ? '' : lead + DICT[k] + trail;
+        t.nodeValue = DICT[k] === '' ? '' : lead + stretchKaf(DICT[k]) + trail;
       }
     }
     for (const el of attrEls) {
