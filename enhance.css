@@ -409,3 +409,20 @@ html[lang="ar"] .lang-toggle span { font-family: 'Tajawal', sans-serif !importan
 /* Skills: letter tiles sized to sit level with the logo tiles */
 .skill__mono { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
 .skill__mono--img img { width: 24px; height: 24px; }
+
+/* Contact lead line */
+.contact__lead { font-family: var(--serif); font-size: 26px; color: var(--cyan); margin: 18px 0 0; }
+
+/* Arabic typesetting: taller lines so letters breathe, no faux spacing */
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.35 !important; }
+html[lang="ar"] p, html[lang="ar"] .section__sub, html[lang="ar"] .service__desc,
+html[lang="ar"] .tl-item__desc, html[lang="ar"] .bh-card__meta, html[lang="ar"] .hero__bio,
+html[lang="ar"] .about p { line-height: 1.95 !important; }
+html[lang="ar"] .section__label, html[lang="ar"] .hero__meta span { letter-spacing: 0 !important; }
+html[lang="ar"] .service__tags span, html[lang="ar"] .tl-item__highlights span { font-size: 0.95em; }
+html[lang="ar"] .section__title em { font-style: normal; }
+
+/* Reveal fallback: anything already on screen gets shown, even if the observer missed it */
+/* Arabic: keep numbers with their plus sign in the right place, and drop the decorative rule that clashes with RTL labels */
+html[lang="ar"] .stat .num { direction: ltr; }
+html[lang="ar"] .section__label::before, html[lang="ar"] .section__label::after { display: none !important; }

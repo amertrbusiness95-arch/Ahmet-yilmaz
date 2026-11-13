@@ -138,3 +138,19 @@
     if (es[0].isIntersecting) { run(); io.disconnect(); }
   }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }).observe(wrap);
 })();
+
+/* Reveal fallback: show anything that is on screen but still hidden */
+(() => {
+  const rescue = () => {
+    const vh = window.innerHeight || 1;
+    document.querySelectorAll('.reveal:not(.is-in), .reveal-clip:not(.is-in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.9 && r.bottom > 0) el.classList.add('is-in');
+    });
+  };
+  let q = false;
+  const onScroll = () => { if (q) return; q = true; requestAnimationFrame(() => { rescue(); q = false; }); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  setTimeout(rescue, 400);
+})();
