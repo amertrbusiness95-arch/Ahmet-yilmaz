@@ -235,7 +235,7 @@
 }
 
 /* Marquee: twice as fast again, same pace as the logo rows */
-.marquee__track { animation-duration: 10s !important; }
+.marquee__track { animation-duration: 5s !important; }
 
 /* Sections sit closer together, no fixed heights */
 section, footer { height: auto !important; }
@@ -334,12 +334,18 @@ section, footer { height: auto !important; }
 }
 .tl-item__highlights .now .dot { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
 .tl-item__highlights .now::before,
-.tl-item__highlights .now::after { display: none !important; animation: none !important; }
+.tl-item__highlights .now::after {
+  display: block !important;
+  border-color: rgba(0, 224, 255, 0.7) !important;
+  animation: nowWave 2.2s ease-out infinite !important;
+}
+.tl-item__highlights .now::after { animation-delay: 1.1s !important; }
 
 /* Tighter spacing between sections */
-.about, .work, .services, .timeline, .clients, .contact {
-  padding-top: 36px !important;
-  padding-bottom: 36px !important;
+section.about, section.work, section.services,
+section.timeline, section.clients, section.contact {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
 }
 
 /* Marquee: a gentle blue shine instead of a strong glow */
@@ -353,3 +359,7 @@ section, footer { height: auto !important; }
   /* smaller words so about four pass per lap */
   .marquee__track { font-size: clamp(15px, 4.2vw, 20px) !important; }
 }
+
+/* Skills: real app icons where the CV has them */
+.skill__mono--img { background: #0C1222; padding: 0; overflow: hidden; }
+.skill__mono--img img { width: 26px; height: 26px; object-fit: contain; display: block; }
