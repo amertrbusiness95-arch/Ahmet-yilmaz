@@ -173,3 +173,24 @@
   .clients__strip.featured .client-logo--aj img { max-height: 130px !important; height: 130px; }
   .clients__strip.featured .client-logo img { max-height: 48px !important; }
 }
+
+/* ==========================================================================
+   7 · Logo frames: one shape everywhere (square), each logo fills its frame
+   Overrides the older per-logo inline sizes so every frame matches.
+   ========================================================================== */
+.clients .client-logo {
+  width: 140px !important;
+  height: 140px !important;
+  padding: 8px !important;
+  border-radius: 10px !important;
+  box-sizing: border-box;
+}
+.clients .client-logo img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.clients .client-logo--aj img { max-width: 100% !important; max-height: 100% !important; }
+.clients__strip,
+.clients__strip.reverse { animation-duration: 10s !important; }
