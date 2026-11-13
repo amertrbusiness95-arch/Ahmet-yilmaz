@@ -1,112 +1,152 @@
 /* ==========================================================================
-   i18n.js — English / Arabic switch. Arabic switches the page to RTL and
-   swaps each visible string for its translation. English restores originals.
+   i18n.js — English / Arabic switch.
+   Arabic flips the page to RTL and swaps the narrative text. Names, project
+   titles, software, the timeline, dates and contact details stay in English.
    ========================================================================== */
 (() => {
   const DICT = {
-    'AHMET YILMAZ · CREATIVE DIRECTION': 'أحمد يلماز · الإدارة الإبداعية',
-    'Work': 'أعمالي', 'About': 'نبذة', 'Capabilities': 'المهارات', 'Experience': 'الخبرة', 'Contact': 'التواصل',
-    'Available': 'متاح',
+    /* nav + header */
+    'Work': 'أعمالي', 'About': 'نبذة عني', 'Capabilities': 'تخصصاتي', 'Experience': 'خبراتي', 'Contact': 'تواصل معي',
     'Live · Istanbul': 'مباشر · إسطنبول',
-    'SENIOR GRAPHIC DESIGNER · 10+ YEARS': 'مصمم جرافيك أول · 10+ سنوات',
-    'EDITORIAL × NEWS × AI': 'تحرير × أخبار × ذكاء اصطناعي',
-    'Designing visual narratives for Al Jazeera Network, Arabi 21 & Channel 9.': 'أصمم سرديات بصرية لشبكة الجزيرة وعربي 21 وقناة 9.',
-    'Senior Graphic Designer · Istanbul ·': 'مصمم جرافيك أول · إسطنبول ·',
-    '10+ years': '10+ سنوات',
-    'in visual communication — editorial design, news graphics, infographics and digital storytelling.': 'في الاتصال البصري — تصميم تحريري وجرافيك إخباري وإنفوجرافيك وسرد رقمي.',
-    'See Selected Work': 'شاهد الأعمال المختارة',
-    'Book an Intro Call': 'احجز مكالمة تعارف',
     'Breaking': 'عاجل',
-    'When the': 'حين تتكلم', 'map': 'الخريطة', 'tells the story before the words do.': 'تروي القصة قبل أن تنطق الكلمات.',
     'Editorial · Cover': 'تحرير · غلاف',
     'Reach · 2024 · M views': 'الوصول · 2024 · مليون مشاهدة',
     'Scroll · Continue': 'مرر للأسفل',
-    'Editorial Design': 'تصميم تحريري', 'Visual Journalism': 'الصحافة البصرية', 'Infographics': 'إنفوجرافيك',
-    'Cinematic Posters': 'بوسترات سينمائية', 'AI Direction': 'إخراج بالذكاء الاصطناعي', 'Brand Systems': 'أنظمة الهوية', 'Motion Graphics': 'جرافيك متحرك',
-    'About / 01': 'نبذة / 01',
+    'When the': 'حين تروي', 'map': 'الخريطة', 'tells the story before the words do.': 'القصة قبل الكلمات.',
+
+    /* hero */
+    'See Selected Work': 'استعرض أعمالي',
+    'Book an Intro Call': 'لنتحدث عن مشروعك',
+    'Senior Graphic Designer · Istanbul ·': 'Senior Graphic Designer · إسطنبول ·',
+    '10+ years': 'خبرة تتجاوز 10 سنوات',
+    'in visual communication — editorial design, news graphics, infographics and digital storytelling.':
+      'أعمل في مجال التصميم البصري، وأتخصص في التصميم الإخباري، والإنفوجرافيك، والهويات البصرية، والسرد القصصي الرقمي.',
+
+    /* marquee */
+    'Editorial Design': 'التصميم التحريري',
+    'Visual Journalism': 'الصحافة البصرية',
+    'Infographics': 'الإنفوجرافيك',
+    'Cinematic Posters': 'البوسترات السينمائية',
+    'AI Direction': 'التوجيه الإبداعي بالذكاء الاصطناعي',
+    'Brand Systems': 'الهوية البصرية',
+    'Motion Graphics': 'الموشن جرافيك',
+
+    /* about */
+    'About / 01': 'نبذة عني / 01',
     'A': '',
-    'creative designer': 'مصمم مبدع',
-    'with a passion for creativity.': 'شغوف بالإبداع.',
-    'I tell the story': 'أروي القصة', 'before': 'قبل', 'you read the headline.': 'أن تقرأ العنوان.',
-    'Senior Graphic Designer with': 'مصمم جرافيك أول بخبرة',
-    'in visual communication, specialising in editorial design, news graphics and digital storytelling.': 'في الاتصال البصري، متخصص في التصميم التحريري والجرافيك الإخباري والسرد الرقمي.',
-    'Since 2018 I’ve worked with leading media organisations — including': 'منذ 2018 عملت مع مؤسسات إعلامية رائدة، من بينها',
-    'Al Jazeera Network': 'شبكة الجزيرة', ',': '،', 'Arabi 21': 'عربي 21', 'and': 'و', 'Channel 9': 'قناة 9',
-    '— creating visual content for broadcast and digital platforms. My work spans visual direction, editorial campaigns, infographics and brand identity, always focused on clarity, creativity and audience engagement.': '— أنتج محتوى بصرياً للبث والمنصات الرقمية. يمتد عملي إلى الإخراج البصري والحملات التحريرية والإنفوجرافيك وهوية العلامات، مع تركيز دائم على الوضوح والإبداع والتفاعل مع الجمهور.',
-    'Years In Practice': 'سنوات من الممارسة', 'Studio Clients': 'عملاء الاستوديو',
+    'creative designer': 'الإبداع يبدأ',
+    'with a passion for creativity.': 'من الفكرة.',
+    'I tell the story': 'أحكي القصة بصريًا',
+    'before': 'قبل',
+    'you read the headline.': 'أن تقرأ عنوانها.',
+    'Senior Graphic Designer with': 'Senior Graphic Designer، أمتلك',
+    'in visual communication, specialising in editorial design, news graphics and digital storytelling.':
+      'في مجال الاتصال البصري، مع تخصص في التصميم الإخباري والإنفوجرافيك والسرد القصصي الرقمي.',
+    'Since 2018 I’ve worked with leading media organisations — including': 'منذ عام 2018، عملت مع مؤسسات إعلامية بارزة، من بينها',
+    'Al Jazeera Network': 'شبكة الجزيرة',
+    ',': '،',
+    'Arabi 21': 'عربي21',
+    'and': 'و',
+    'Channel 9': 'قناة 9',
+    '— creating visual content for broadcast and digital platforms. My work spans visual direction, editorial campaigns, infographics and brand identity, always focused on clarity, creativity and audience engagement.':
+      'على إنتاج محتوى بصري مخصص للشاشات والمنصات الرقمية. تشمل خبراتي الإشراف البصري، وتصميم الحملات الإعلامية، والإنفوجرافيك، وتطوير الهويات البصرية، مع التركيز على وضوح الفكرة، وجودة التنفيذ، وقدرة التصميم على إيصال الرسالة للجمهور.',
+    'Years In Practice': 'سنوات خبرة',
+    'Studio Clients': 'عملاء ومؤسسات',
+
+    /* work */
     'Selected Work / 02': 'أعمال مختارة / 02',
-    'Six stories.': 'ست قصص.', 'Different': 'ولغات', 'visual languages': 'بصرية مختلفة',
-    'Full archive on Behance —': 'الأرشيف الكامل على بيهانس —',
+    'Six stories.': 'مشاريع مختلفة،',
+    'Different': 'ولكل مشروع',
+    'visual languages': 'هويته البصرية',
+    'Full archive on Behance —': 'استعرض ملف أعمالي على Behance —',
     'From the archive · behance.net/ahmedamer14': 'من الأرشيف · behance.net/ahmedamer14',
-    'View all projects ↗': 'كل المشاريع ↗',
+    'View all projects ↗': 'عرض جميع الأعمال ↗',
+    'View full archive on Behance': 'استعرض ملف أعمالي على Behance',
     'Editorial · Campaign · 2024': 'تحرير · حملة · 2024',
-    'Ramadan Rassd N': 'رصد رمضان',
     'Infographic · Al Jazeera · 2025': 'إنفوجرافيك · الجزيرة · 2025',
-    'Infographics — Al Jazeera': 'إنفوجرافيك — شبكة الجزيرة',
     'News Visual · Al Jazeera · 2025': 'بصري إخباري · الجزيرة · 2025',
-    'Aviation Incidents': 'حوادث الطيران', 'Identity · Branding': 'هوية · علامة تجارية',
-    'Marrikh Podcast': 'بودكاست مريخ', 'Illustration · Series': 'إلاستريشن · سلسلة',
-    'Islamic Characters': 'شخصيات إسلامية', 'Editorial · Al Jazeera · 2024': 'تحرير · الجزيرة · 2024',
-    'View full archive on Behance': 'الأرشيف الكامل على بيهانس',
-    'Capabilities / 03': 'المهارات / 03',
-    'What lands on': 'ما ينجز على', 'the desk': 'طور التصميم',
-    'Direction, design and production. Solo or with an in-house team.': 'إخراج وتصميم وإنتاج. منفرداً أو مع فريق داخلي.',
-    'Editorial &': 'تحرير و', 'Newsroom Design': 'تصميم غرف الأخبار',
-    'Cover systems, weekly templates, long-form layouts, breaking-news frameworks.': 'أنظمة الأغلفة، القوالب الأسبوعية، التخطيطات الطويلة، أطر الأخبار العاجلة.',
-    'Cover Systems': 'أنظمة الأغلفة', 'Long-form': 'محتوى طويل', 'Templates': 'قوالب',
-    'Infographics &': 'إنفوجرافيك و', 'Data Visualisation': 'تصور البيانات',
-    'Politics, conflict, economy, culture. Feed, print and TV — Arabic and English.': 'سياسة، نزاعات، اقتصاد، ثقافة. للمنصات الرقمية والمطبوعات والتلفزيون — بالعربية والإنجليزية.',
-    'Charts': 'مخططات', 'Maps': 'خرائط', 'Explainers': 'شروحات',
-    'Cinematic Posters &': 'بوسترات سينمائية و', 'Key Art': 'الفن الرئيسي',
-    'Title treatments, campaign key art and poster systems for TV and documentary.': 'معالجات العناوين وفن الحملات وأنظمة البوسترات للتلفزيون والوثائقيات.',
-    'Title Treatment': 'معالجة العناوين', 'Print': 'مطبوعات', 'OOH': 'إعلانات خارجية',
-    'Powered by AI': 'بالذكاء الاصطناعي', 'Visual Storytelling': 'السرد البصري',
-    'Prompt systems, model-led editorial illustration, hybrid pipelines for newsrooms.': 'أنظمة الأوامر، رسوم تحريرية بالنماذج، وخطوط إنتاج هجينة لغرف الأخبار.',
-    'Pipelines': 'خطوط الإنتاج',
-    'Brand & Identity': 'الهوية والعلامة', 'for Media': 'للإعلام',
-    'Wordmarks': 'شعارات نصية', 'Bilingual': 'ثنائي اللغة', 'Guidelines': 'أدلة الهوية',
-    'Wordmarks, programme identities and bilingual systems — Arabic + Latin as siblings.': 'شعارات نصية وهويات برامج وأنظمة ثنائية اللغة — العربية واللاتينية كأخوين.',
-    'Motion &': 'الحركة و', 'On-Air Graphics': 'جرافيك البث',
-    'Title sequences, lower-thirds, on-air packages and short-form social motion.': 'تتابعات العناوين، شرائط الأسماء، حزم البث، والحركة القصيرة للسوشيال.',
-    'After Effects': 'أفتر إفكتس', 'Premiere': 'بريمير', 'Title Design': 'تصميم العناوين',
-    'Tools & proficiency': 'الأدوات والإتقان',
-    'Photoshop': 'فوتوشوب', 'Illustrator': 'إليستريتور', 'AI Tools': 'أدوات الذكاء الاصطناعي', 'Premiere Pro': 'بريمير برو',
-    'Experience / 04': 'الخبرة / 04',
-    'Ten years of': 'عشر سنوات من', 'creativity': 'السرد البصري',
-    'Since 2018, working with leading media organizations — Al Jazeera Network and Arabi 21 — creating visual content for broadcast and digital platforms.': 'منذ 2018، أعمل مع مؤسسات إعلامية رائدة — شبكة الجزيرة وعربي 21 — أنتج محتوى بصرياً للبث والمنصات الرقمية.',
-    '2023 — Present': '2023 — الآن',
-    'Senior Graphic Designer · Al Jazeera Network': 'مصمم جرافيك أول · شبكة الجزيرة',
-    'Istanbul, Türkiye': 'إسطنبول، تركيا',
-    '· international media network': '· شبكة إعلامية دولية',
-    'Designing visual identities for films, video productions and news content; motion graphics, on-screen graphics and visual treatments across broadcast and digital platforms.': 'تصميم هويات بصرية للأفلام والإنتاجات المرئية والمحتوى الإخباري؛ جرافيك متحرك وعناصر على الشاشة ومعالجات بصرية عبر البث والمنصات الرقمية.',
-    'Now': 'الآن',
-    '2022 — 2025': '2022 — 2025',
-    'Senior Graphic Designer · Arabi 21': 'مصمم جرافيك أول · عربي 21',
-    '· digital news platform': '· منصة أخبار رقمية',
-    'Visual content for digital news, features and social media. Data-driven infographics for Arabic-speaking audiences.': 'محتوى بصري للأخبار الرقمية والتقارير ومواقع التواصل. إنفوجرافيك قائم على البيانات للجمهور الناطق بالعربية.',
-    '2019 — 2024': '2019 — 2024',
-    'Senior Graphic Designer · Attractant Marketing Agency': 'مصمم جرافيك أول · وكالة Attractant للتسويق',
-    '· studio commissions': '· أعمال استوديو',
-    'Al Jazeera Mubasher · Ma’a Al-Hakeem, Montada Al Tarbia, Nosos Academy, Fikr & Rawasekh, Dr. Al-Awadhi, Dr. Khalid Al-Jaber, The German Arabic Home, Global Campaign · Prophet Muhammad (PBUH).': 'الجزيرة مباشر · معاً الحكيم، منتدى التربية، أكاديمية نسوس، فكر وروافد، د. العوضي، د. خالد الجابر، البيت الألماني العربي، الحملة العالمية · نصرة النبي محمد ﷺ.',
-    'Junior Graphic Designer · Channel 9 (TV)': 'مصمم جرافيك مبتدئ · قناة 9 (تلفزيون)',
-    '· broadcast television': '· تلفزيون بث',
-    'On-screen graphics, lower-thirds and content videos for TV programmes.': 'جرافيك على الشاشة وشرائط الأسماء وفيديوهات المحتوى لبرامج تلفزيونية.',
-    '2016 — 2018': '2016 — 2018',
-    'Freelance Graphic Designer': 'مصمم جرافيك حر', '· independent': '· مستقل',
-    'Freelance design for real estate companies, a food brand and aesthetic clinics.': 'تصميم حر لشركات عقارية وعلامة أغذية وعيادات تجميل.',
+    'Identity · Branding': 'هوية · علامة تجارية',
+    'Illustration · Series': 'إلاستريشن · سلسلة',
+    'Editorial · Al Jazeera · 2024': 'تحرير · الجزيرة · 2024',
+
+    /* capabilities */
+    'Capabilities / 03': 'تخصصاتي / 03',
+    'What lands on': 'من الفكرة إلى',
+    'the desk': 'التنفيذ',
+    'Direction, design and production. Solo or with an in-house team.':
+      'أقدم حلولًا بصرية متكاملة، من تطوير الفكرة والتوجيه الفني إلى التصميم والإنتاج، سواء بشكل مستقل أو بالتعاون مع فرق العمل.',
+    'Editorial &': 'التصميم الإخباري',
+    'Newsroom Design': 'والتحريري',
+    'Cover systems, weekly templates, long-form layouts, breaking-news frameworks.':
+      'تصميم الأغلفة الإخبارية، والقوالب الدورية، والمحتوى التحريري المطوّل، والمعالجات البصرية للأخبار العاجلة.',
+    'Cover Systems': 'أغلفة إخبارية',
+    'Long-form': 'تصميمات مطولة',
+    'Templates': 'قوالب تحريرية',
+    'Infographics &': 'الإنفوجرافيك',
+    'Data Visualisation': 'وتصور البيانات',
+    'Politics, conflict, economy, culture. Feed, print and TV — Arabic and English.':
+      'تحويل المعلومات والبيانات المعقدة إلى محتوى بصري واضح وجذاب، في مجالات السياسة والاقتصاد والثقافة والشؤون الدولية.',
+    'Charts': 'رسوم بيانية',
+    'Maps': 'خرائط',
+    'Explainers': 'شروحات بصرية',
+    'Cinematic Posters &': 'البوسترات السينمائية',
+    'Key Art': 'والهوية البصرية للأعمال',
+    'Title treatments, campaign key art and poster systems for TV and documentary.':
+      'تصميم البوسترات والمعالجات البصرية للأفلام والبرامج التلفزيونية والوثائقية، إلى جانب تطوير العناصر الرئيسية للحملات الإعلامية.',
+    'Title Treatment': 'تصميم العناوين',
+    'Print': 'البوسترات',
+    'OOH': 'الحملات البصرية',
+    'Visual Storytelling': 'السرد البصري',
+    'Powered by AI': 'بالذكاء الاصطناعي',
+    'Prompt systems, model-led editorial illustration, hybrid pipelines for newsrooms.':
+      'توظيف أدوات الذكاء الاصطناعي في إنتاج المحتوى البصري، وتطوير أنظمة البرومبتات، ودمج التقنيات الحديثة ضمن مراحل التصميم والإنتاج الإعلامي.',
+    'Pipelines': 'أنظمة الإنتاج',
+    'Brand & Identity': 'الهوية البصرية',
+    'for Media': 'للمؤسسات الإعلامية',
+    'Wordmarks': 'الشعارات',
+    'Bilingual': 'الهويات البصرية',
+    'Guidelines': 'أدلة الاستخدام',
+    'Wordmarks, programme identities and bilingual systems — Arabic + Latin as siblings.':
+      'تصميم الشعارات وهويات البرامج والمشاريع الإعلامية، وتطوير أنظمة بصرية متكاملة تحافظ على اتساق العلامة التجارية عبر مختلف المنصات.',
+    'Motion &': 'الموشن جرافيك',
+    'On-Air Graphics': 'وجرافيك البث',
+    'Title sequences, lower-thirds, on-air packages and short-form social motion.':
+      'تصميم مقدمات البرامج والهويات المتحركة والعناصر البصرية للشاشات، إلى جانب إنتاج الموشن جرافيك للمحتوى الإخباري والمنصات الرقمية.',
+    'Title Design': 'تصميم العناوين',
+    'Tools & proficiency': 'الأدوات والبرامج التي أستخدمها',
+
+    /* experience (timeline itself stays English) */
+    'Experience / 04': 'خبراتي / 04',
+    'Ten years of': 'أكثر من عقد من',
+    'creativity': 'الخبرة والإبداع',
+    'Since 2018, working with leading media organizations — Al Jazeera Network and Arabi 21 — creating visual content for broadcast and digital platforms.':
+      'مسيرة مهنية في التصميم الإعلامي، بالتعاون مع مؤسسات إخبارية وشركات إبداعية، لإنتاج محتوى بصري يجمع بين قوة الفكرة وجودة التنفيذ.',
+
+    /* clients */
     'Clients & Partners / 05': 'العملاء والشركاء / 05',
-    'Clients': 'العملاء', '& partners, one visual desk.': 'والشركاء، طاولة بصرية واحدة.',
+    'Clients': 'شراكات متنوعة،',
+    '& partners, one visual desk.': 'ورؤية بصرية واحدة.',
+
+    /* contact */
     'Contact / 06': 'التواصل / 06',
-    'Currently booking · Q3 — Q4 2026': 'الحجز متاح · الربع الثالث — الرابع 2026',
-    "Let's": 'يلا', 'work': 'نشتغل', 'together.': 'مع بعض.',
-    'Email': 'البريد', 'Istanbul': 'إسطنبول', 'Studio': 'الاستوديو',
-    'Available remote · GMT+3 · willing to travel for in-newsroom residencies.': 'متاح عن بُعد · GMT+3 · مستعد للسفر للإقامة داخل غرف الأخبار.',
-    'Direct': 'مباشر',
-    'Reply within 24h, weekdays.': 'الرد خلال 24 ساعة، أيام الأسبوع.',
-    '· Ahmet Yilmaz · Senior Graphic Designer': '· أحمد يلماز · مصمم جرافيك أول',
-    'Designed in Istanbul · Set in Instrument Serif & Space Grotesk': 'صُمم في إسطنبول · بخطوط Instrument Serif و Space Grotesk',
-    '↑ Top': '↑ للأعلى'
+    'Currently booking · Q3 — Q4 2026': 'متاح حاليًا لمناقشة مشاريع جديدة.',
+    "Let's": 'لنبدأ',
+    'work': 'مشروعًا جديدًا',
+    'together.': 'معًا.',
+    'Email': 'البريد',
+    'Istanbul': 'إسطنبول',
+    'Studio': 'الموقع',
+    'Istanbul, Türkiye': 'إسطنبول، تركيا',
+    'Available remote · GMT+3 · willing to travel for in-newsroom residencies.':
+      'متاح للعمل عن بُعد، مع إمكانية السفر والمشاركة في المشاريع التي تتطلب الحضور ضمن فرق التحرير والإنتاج الإعلامي.',
+    'Direct': 'التواصل المباشر',
+    'Reply within 24h, weekdays.': 'عادةً ما أرد على الرسائل خلال 24 ساعة في أيام العمل.',
+
+    /* footer */
+    'Designed in Istanbul · Set in Instrument Serif & Space Grotesk': 'صُمم في إسطنبول.',
+    '↑ Top': '↑ العودة إلى الأعلى'
   };
+
   const ATTRS = {
     'Primary': 'القائمة الرئيسية',
     'Contact channels': 'قنوات التواصل',
@@ -117,7 +157,9 @@
     'Location: Istanbul': 'الموقع: إسطنبول',
     'Switch language': 'تغيير اللغة'
   };
-  const SKIP = 'script,style,svg,#tweaksPanel,#liveTime,.cursor-dot,.cursor-ring,.stat .num,.skill__num,.lang-toggle';
+
+  /* Kept in English in both languages: timeline, project titles, software and skill names, live clock, stats numbers, the name and the tweaks panel */
+  const SKIP = 'script,style,svg,#tweaksPanel,#liveTime,.cursor-dot,.cursor-ring,.stat .num,.skill__top,.tl-item,.bh-card__title,.lang-toggle';
   const norm = (s) => s.replace(/\s+/g, ' ').trim();
   const orig = new WeakMap();
   const texts = [];

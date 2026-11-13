@@ -1,3 +1,9 @@
+/* Arabic face: ITF Huwiya, supplied by the owner */
+@font-face { font-family: "Huwiya"; src: url("fonts/Huwiya-Light.otf") format("opentype"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Huwiya"; src: url("fonts/Huwiya-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Huwiya"; src: url("fonts/Huwiya-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Huwiya"; src: url("fonts/Huwiya-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Huwiya"; src: url("fonts/Huwiya-Black.otf") format("opentype"); font-weight: 900; font-display: swap; }
 .reveal.mo-l { transform: translate(-48px, 28px); }
 .reveal.mo-r { transform: translate(48px, 28px); }
 .reveal.mo-l.is-in,
@@ -391,20 +397,20 @@ section.timeline, section.clients, section.contact {
   transition: background 200ms, color 200ms, opacity 200ms;
 }
 .lang-toggle span.is-on { background: var(--cyan); color: #061018; opacity: 1; font-weight: 600; }
-.lang-toggle span[data-k="ar"] { font-family: 'Tajawal', sans-serif; font-size: 13px; letter-spacing: 0; }
+.lang-toggle span[data-k="ar"] { font-family: 'Huwiya', 'Tajawal', sans-serif; font-size: 13px; letter-spacing: 0; }
 
 /* Arabic mode: Tajawal for body text, the hero name keeps its display face */
 html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] p,
 html[lang="ar"] span, html[lang="ar"] a, html[lang="ar"] li, html[lang="ar"] div,
 html[lang="ar"] button, html[lang="ar"] label, html[lang="ar"] strong, html[lang="ar"] em {
-  font-family: 'Tajawal', sans-serif !important;
+  font-family: 'Huwiya', 'Tajawal', sans-serif !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
 }
 html[lang="ar"] .hero__title, html[lang="ar"] .hero__title * {
   font-family: var(--display) !important;
 }
-html[lang="ar"] .lang-toggle span { font-family: 'Tajawal', sans-serif !important; }
+html[lang="ar"] .lang-toggle span { font-family: 'Huwiya', 'Tajawal', sans-serif !important; }
 
 /* Skills: letter tiles sized to sit level with the logo tiles */
 .skill__mono { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
