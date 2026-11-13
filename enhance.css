@@ -363,3 +363,15 @@ section.timeline, section.clients, section.contact {
 /* Skills: real app icons where the CV has them */
 .skill__mono--img { background: #0C1222; padding: 0; overflow: hidden; }
 .skill__mono--img img { width: 26px; height: 26px; object-fit: contain; display: block; }
+
+/* Laptop: a little more air between blocks so nothing feels stuck together */
+@media (min-width: 901px) {
+  section.about, section.work, section.services,
+  section.timeline, section.clients, section.contact {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+  .about p, .work p, .services p, .timeline p, .contact p { line-height: 1.75; }
+  .section__head { margin-bottom: 44px; }
+  .about { gap: 80px; }
+}
