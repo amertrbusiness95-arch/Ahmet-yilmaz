@@ -415,7 +415,7 @@ html[lang="ar"] .lang-toggle span { font-family: 'AlJazeeraNew', sans-serif !imp
 /* Contact lead line */
 
 /* Arabic typesetting: taller lines so letters breathe, no faux spacing */
-html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.35 !important; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.35 !important; font-weight: 900 !important; }
 html[lang="ar"] p, html[lang="ar"] .section__sub, html[lang="ar"] .service__desc,
 html[lang="ar"] .tl-item__desc, html[lang="ar"] .bh-card__meta, html[lang="ar"] .hero__bio,
 html[lang="ar"] .about p { line-height: 1.95 !important; }
@@ -488,3 +488,11 @@ html[lang="ar"] .about__quote, html[lang="ar"] .contact__title {
 
 /* Arabic: the font's own long kashida (stylistic set 08) on every stretched kaf */
 html[lang="ar"] body { font-feature-settings: "ss08" 1; }
+
+/* Arabic: phone number stays left-to-right inside the RTL page */
+html[lang="ar"] a[href^="tel:"] { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+/* Arabic: stat numbers and skill percentages in Black, the strongest weight */
+html[lang="ar"] .stat .num, html[lang="ar"] .skill__num { font-weight: 900 !important; }
+/* Arabic experience heading: the short paragraph sits under the title */
+html[lang="ar"] section.timeline .section__head { flex-direction: column; align-items: flex-start; gap: 18px; }
+html[lang="ar"] section.timeline .section__sub { margin: 0; max-width: 52ch; }

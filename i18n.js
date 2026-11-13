@@ -12,7 +12,7 @@
     'Editorial · Cover': 'تحرير · غلاف',
     'Reach · 2024 · M views': 'الوصول · 2024 · مليون مشاهدة',
     'Scroll · Continue': 'مرر للأسفل',
-    'When the': 'حين تروي', 'map': 'الخريطة', 'tells the story before the words do.': 'القصة قبل الكلمات.',
+    'When the': 'حين تتكلم', 'map': 'الخريطة', 'tells the story before the words do.': 'قبل أن تتكلم الكلمات.',
 
     /* hero */
     'See Selected Work': 'استعرض أعمالي',
@@ -36,9 +36,9 @@
     'A': '',
     'creative designer': 'الإبداع يبدأ',
     'with a passion for creativity.': 'من الفكرة.',
-    'I tell the story': 'أحكي القصة بصريًا',
-    'before': 'قبل',
-    'you read the headline.': 'أن تقرأ عنوانها.',
+    'I tell the story': 'الصورة تحكي',
+    'before': 'أولًا،',
+    'you read the headline.': 'والكلمات بعدها.',
     'Senior Graphic Designer with': 'Senior Graphic Designer، أمتلك',
     'in visual communication, specialising in editorial design, news graphics and digital storytelling.':
       'في مجال الاتصال البصري، مع تخصص في التصميم الإخباري والإنفوجرافيك والسرد القصصي الرقمي.',
@@ -173,8 +173,8 @@
   const attrOrig = new WeakMap();
   const toggle = document.getElementById('langToggle');
 
-  /* Kashida: a tatweel after every kaf that joins to the next letter, so the kaf is drawn out */
-  const stretchKaf = (s) => s.replace(/ك(?=[بتثجحخسشصضطظعغفقكلمنهيئ])/g, 'ك\u0640');
+  /* Kashida comes from the font itself (ss08 stretches the kaf); no extra tatweel is inserted */
+  const stretchKaf = (s) => s;
 
   function apply(lang) {
     const ar = lang === 'ar';
