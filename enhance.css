@@ -375,3 +375,37 @@ section.timeline, section.clients, section.contact {
   .section__head { margin-bottom: 44px; }
   .about { gap: 80px; }
 }
+
+/* Language switch: EN | عربي pill in the nav */
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 3px; margin-inline-start: 14px;
+  border: 1px solid var(--line-2); border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+.lang-toggle span {
+  padding: 6px 12px; border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--ink-2, var(--ink)); opacity: 0.6;
+  transition: background 200ms, color 200ms, opacity 200ms;
+}
+.lang-toggle span.is-on { background: var(--cyan); color: #061018; opacity: 1; font-weight: 600; }
+.lang-toggle span[data-k="ar"] { font-family: 'Tajawal', sans-serif; font-size: 13px; letter-spacing: 0; }
+
+/* Arabic mode: Tajawal for body text, the hero name keeps its display face */
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] p,
+html[lang="ar"] span, html[lang="ar"] a, html[lang="ar"] li, html[lang="ar"] div,
+html[lang="ar"] button, html[lang="ar"] label, html[lang="ar"] strong, html[lang="ar"] em {
+  font-family: 'Tajawal', sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+html[lang="ar"] .hero__title, html[lang="ar"] .hero__title * {
+  font-family: var(--display) !important;
+}
+html[lang="ar"] .lang-toggle span { font-family: 'Tajawal', sans-serif !important; }
+
+/* Skills: letter tiles sized to sit level with the logo tiles */
+.skill__mono { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
+.skill__mono--img img { width: 24px; height: 24px; }
