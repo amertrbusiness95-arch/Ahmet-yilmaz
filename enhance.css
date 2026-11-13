@@ -276,3 +276,80 @@ section, footer { height: auto !important; }
   .hero__bio { order: 4; }
   .hero__cta { order: 5; }
 }
+
+/* ==========================================================================
+   Round 2 · skills bars, Now marker, tighter spacing, phone tweaks
+   ========================================================================== */
+
+/* Skills: CV-style proficiency bars with a moving cursor at each fill's end */
+.skills { max-width: var(--maxw); margin: 56px auto 0; padding: 0 var(--pad-x); }
+.skills .section__label { display: block; margin-bottom: 22px; }
+.skills__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 22px 44px;
+}
+.skill { display: flex; align-items: center; gap: 14px; }
+.skill__mono {
+  width: 44px; height: 44px; flex: 0 0 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 10px;
+  background: #0C1222;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--cyan);
+}
+.skill__body { flex: 1; min-width: 0; }
+.skill__top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 9px;
+}
+.skill__num { color: var(--cyan); font-variant-numeric: tabular-nums; }
+.skill__track {
+  position: relative; display: block; height: 6px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+.skill__fill {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0, 224, 255, 0.3), var(--cyan));
+  box-shadow: 0 0 12px rgba(0, 224, 255, 0.35);
+  transition: width 1.6s var(--ease);
+}
+.skill__fill::after {
+  content: "";
+  position: absolute; right: -6px; top: 50%;
+  width: 12px; height: 12px; margin-top: -6px; border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 224, 255, 0.35), 0 0 14px var(--cyan);
+}
+@media (max-width: 640px) {
+  .skills__list { grid-template-columns: 1fr; gap: 18px; }
+}
+
+/* Now: site cyan with a glow, a plain dot, no pulse waves */
+.tl-item__highlights .now {
+  background: rgba(0, 224, 255, 0.12);
+  color: var(--cyan);
+  border-color: rgba(0, 224, 255, 0.6);
+  box-shadow: 0 0 22px rgba(0, 224, 255, 0.45), inset 0 0 12px rgba(0, 224, 255, 0.12);
+}
+.tl-item__highlights .now .dot { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+.tl-item__highlights .now::before,
+.tl-item__highlights .now::after { display: none !important; animation: none !important; }
+
+/* Tighter spacing between sections */
+.about, .work, .services, .timeline, .clients, .contact {
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
+}
+
+/* Marquee: a gentle blue shine instead of a strong glow */
+.mq {
+  text-shadow: 0 0 calc(var(--lit, 0) * 10px) rgba(0, 224, 255, calc(var(--lit, 0) * 0.45));
+}
+
+@media (max-width: 640px) {
+  /* hero line under the portrait is hidden on phones */
+  .hero__subline { display: none !important; }
+  /* smaller words so about four pass per lap */
+  .marquee__track { font-size: clamp(15px, 4.2vw, 20px) !important; }
+}

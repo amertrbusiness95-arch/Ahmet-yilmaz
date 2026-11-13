@@ -72,3 +72,34 @@
   }
   tick();
 })();
+
+/* Skills: bars fill and numbers count up when the block scrolls into view */
+(() => {
+  const box = document.querySelector('.skills');
+  if (!box) return;
+  const items = Array.from(box.querySelectorAll('.skill'));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run() {
+    items.forEach((it, i) => {
+      const fill = it.querySelector('.skill__fill');
+      const num = it.querySelector('.skill__num b');
+      const target = +it.dataset.val;
+      if (reduce) { num.textContent = target; fill.style.width = target + '%'; return; }
+      setTimeout(() => {
+        fill.style.width = target + '%';
+        const t0 = performance.now();
+        const dur = 1600;
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / dur);
+          const e = 1 - Math.pow(1 - p, 3);
+          num.textContent = Math.round(target * e);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, i * 120);
+    });
+  }
+  new IntersectionObserver((es, io) => {
+    if (es[0].isIntersecting) { run(); io.disconnect(); }
+  }, { threshold: 0.3 }).observe(box);
+})();
