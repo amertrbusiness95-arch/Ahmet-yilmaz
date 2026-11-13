@@ -88,11 +88,79 @@
 /* ==========================================================================
    4 · Size tweaks
    ========================================================================== */
-/* Al Jazeera a touch larger in the featured strip */
+/* Al Jazeera a touch larger in the featured strip, no glow blur so it stays crisp */
 .clients__strip.featured .client-logo--aj { padding: 6px 14px; }
-.clients__strip.featured .client-logo--aj img { height: 88px; width: auto; max-height: none; }
+.clients__strip.featured .client-logo--aj img { height: 88px; width: auto; max-height: none; filter: none; }
+
+/* strips move a little faster */
+.clients__strip, .clients__strip.reverse { animation-duration: 38s; }
+
+/* sections grow with their content (inline canvas heights no longer pin them) */
+.clients, .contact { height: auto !important; }
 
 /* hero portrait a little larger; the floating cards keep overlapping it */
 @media (min-width: 769px) {
   .portrait { inset: 3% 9% 0 9%; }
+}
+
+/* ==========================================================================
+   5 · Contact channels — glowing icon buttons
+   ========================================================================== */
+.contact__icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 34px 0 48px;
+}
+.cico {
+  --glow: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 224, 255, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 0 1px rgba(0, 224, 255, 0.08), 0 0 22px rgba(0, 224, 255, 0.12);
+  transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), border-color 250ms var(--ease), background 250ms var(--ease);
+}
+.cico svg {
+  width: 22px;
+  height: 22px;
+  color: var(--glow);
+  filter: drop-shadow(0 0 8px var(--glow));
+  flex-shrink: 0;
+}
+.cico--wa  { --glow: #25D366; }
+.cico--ig  { --glow: #FF5FA2; }
+.cico--be  { --glow: #4DA3FF; }
+.cico--mail{ --glow: var(--cyan); }
+.cico--pin { --glow: #FFC857; }
+.cico:hover,
+.cico:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--glow);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 0 0 1px var(--glow), 0 0 34px color-mix(in srgb, var(--glow) 45%, transparent), 0 18px 40px rgba(0, 0, 0, 0.35);
+  outline: none;
+}
+.cico:hover svg { filter: drop-shadow(0 0 14px var(--glow)); }
+@media (max-width: 640px) {
+  .contact__icons { gap: 10px; margin: 22px 0 32px; }
+  .cico { padding: 10px 14px 10px 12px; font-size: 10px; gap: 9px; }
+  .cico svg { width: 19px; height: 19px; }
+}
+
+/* ==========================================================================
+   6 · Mobile hero portrait — stays inside the screen
+   ========================================================================== */
+@media (max-width: 640px) {
+  .hero__stage { max-width: min(320px, 100%); overflow: visible; }
+  .portrait { inset: 0 !important; width: 100% !important; height: 100% !important; }
 }
