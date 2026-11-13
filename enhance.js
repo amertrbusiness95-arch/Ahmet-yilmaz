@@ -103,3 +103,38 @@
     if (es[0].isIntersecting) { run(); io.disconnect(); }
   }, { threshold: 0.3 }).observe(box);
 })();
+
+/* About stats: 10+ and 8+ count up from zero when the row comes into view */
+(() => {
+  const wrap = document.querySelector('.about__stats-wrap');
+  if (!wrap) return;
+  const nums = Array.from(wrap.querySelectorAll('.stat .num'));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = nums.map(el => {
+    const t = el.firstChild;
+    const v = parseInt(t.textContent, 10);
+    return { t, v };
+  });
+  function run() {
+    wrap.classList.add('is-in');
+    if (reduce) return;
+    targets.forEach(({ t, v }, i) => {
+      if (isNaN(v)) return;
+      t.textContent = '0';
+      setTimeout(() => {
+        const t0 = performance.now();
+        const dur = 1400;
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / dur);
+          const e = 1 - Math.pow(1 - p, 3);
+          t.textContent = String(Math.round(v * e));
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, i * 200);
+    });
+  }
+  new IntersectionObserver((es, io) => {
+    if (es[0].isIntersecting) { run(); io.disconnect(); }
+  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }).observe(wrap);
+})();
