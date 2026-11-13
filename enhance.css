@@ -1,0 +1,98 @@
+/* ==========================================================================
+   enhance.css — additive layer (loaded after styles.css)
+   1. Scroll motion: alternating left / right entrances + live scroll drift
+   2. Featured partner logos
+   3. Vertical career timeline (.tlv)
+   Nothing here overrides the existing visual language: same tokens, same
+   radii, same cyan accent.
+   ========================================================================== */
+
+/* ==========================================================================
+   1 · Scroll motion
+   ========================================================================== */
+.reveal.mo-l { transform: translate(-48px, 28px); }
+.reveal.mo-r { transform: translate(48px, 28px); }
+.reveal.mo-l.is-in,
+.reveal.mo-r.is-in { transform: translate(0, 0); }
+
+/* keep existing hover lifts alive above the motion rules */
+.bh-card.reveal.is-in:hover { transform: translateY(-4px); border-color: var(--cyan); }
+
+/* no sideways scrollbars from the entrances */
+.work, .services, .timeline, .about { overflow-x: clip; }
+
+/* elements that drift a few px while the page scrolls */
+[data-drift] {
+  transform: translateX(var(--drift, 0px));
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal.mo-l, .reveal.mo-r { transform: none; }
+  [data-drift] { transform: none; }
+}
+
+/* ==========================================================================
+   2 · Featured partner strip — same strip, same size, same motion; only
+   the four partner logos, always lit
+   ========================================================================== */
+.clients__strip.featured .client-logo {
+  filter: none;
+  opacity: 1;
+  border-color: rgba(0, 224, 255, 0.45);
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 0%, rgba(0, 224, 255, 0.10), transparent 70%),
+    linear-gradient(180deg, #11162A, #0A0E1A);
+  box-shadow: 0 0 0 1px rgba(0, 224, 255, 0.18), 0 14px 34px rgba(0, 224, 255, 0.10);
+}
+.clients__strip.featured .client-logo img { filter: drop-shadow(0 0 14px rgba(0, 224, 255, 0.22)); }
+
+/* ==========================================================================
+   3 · Timeline spine — a line along the years, a circle centred on it and
+   on each row
+   ========================================================================== */
+.tl-item { padding-left: 36px; }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(0, 224, 255, 0.55), var(--line-2));
+}
+.tl-item:first-child::before { top: 50%; }
+.tl-item:last-child::before  { bottom: 50%; }
+.tl-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  margin-top: -7.5px;
+  border-radius: 50%;
+  border: 1px solid var(--cyan);
+  background: radial-gradient(circle, var(--cyan) 0 3px, #060810 3.5px);
+  box-shadow: 0 0 0 4px #060810, 0 0 18px rgba(0, 224, 255, 0.35);
+  transition: box-shadow 250ms var(--ease);
+}
+.tl-item:first-child::after { animation: ringPulse 2s var(--ease) infinite; }
+.tl-item:hover::after { box-shadow: 0 0 0 4px #060810, 0 0 28px rgba(0, 224, 255, 0.6); }
+@media (max-width: 640px) {
+  .tl-item { padding-left: 30px !important; }
+  .tl-item::before { left: 5px; }
+  .tl-item::after { width: 11px; height: 11px; margin-top: -5.5px; background: radial-gradient(circle, var(--cyan) 0 2px, #060810 2.5px); }
+}
+
+/* ==========================================================================
+   4 · Size tweaks
+   ========================================================================== */
+/* Al Jazeera a touch larger in the featured strip */
+.clients__strip.featured .client-logo--aj { padding: 6px 14px; }
+.clients__strip.featured .client-logo--aj img { height: 88px; width: auto; max-height: none; }
+
+/* hero portrait a little larger; the floating cards keep overlapping it */
+@media (min-width: 769px) {
+  .portrait { inset: 3% 9% 0 9%; }
+}
