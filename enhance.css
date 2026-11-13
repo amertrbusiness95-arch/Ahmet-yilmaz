@@ -59,7 +59,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(180deg, rgba(0, 224, 255, 0.55), var(--line-2));
+  background: rgba(0, 224, 255, 0.45);
 }
 .tl-item:first-child::before { top: 50%; }
 .tl-item:last-child::before  { bottom: 50%; }
@@ -74,11 +74,11 @@
   border-radius: 50%;
   border: 1px solid var(--cyan);
   background: radial-gradient(circle, var(--cyan) 0 3px, #060810 3.5px);
-  box-shadow: 0 0 0 4px #060810, 0 0 18px rgba(0, 224, 255, 0.35);
+  box-shadow: 0 0 18px rgba(0, 224, 255, 0.35);
   transition: box-shadow 250ms var(--ease);
 }
 .tl-item:first-child::after { animation: ringPulse 2s var(--ease) infinite; }
-.tl-item:hover::after { box-shadow: 0 0 0 4px #060810, 0 0 28px rgba(0, 224, 255, 0.6); }
+.tl-item:hover::after { box-shadow: 0 0 28px rgba(0, 224, 255, 0.6); }
 @media (max-width: 640px) {
   .tl-item { padding-left: 30px !important; }
   .tl-item::before { left: 5px; }
@@ -89,8 +89,9 @@
    4 · Size tweaks
    ========================================================================== */
 /* Al Jazeera a touch larger in the featured strip, no glow blur so it stays crisp */
-.clients__strip.featured .client-logo--aj { padding: 6px 14px; }
-.clients__strip.featured .client-logo--aj img { height: 88px; width: auto; max-height: none; filter: none; }
+.clients__strip.featured .client-logo { height: 124px; }
+.clients__strip.featured .client-logo--aj { padding: 4px 14px; }
+.clients__strip.featured .client-logo--aj img { height: 116px; width: auto; max-height: none; filter: none; }
 
 /* strips move a little faster */
 .clients__strip, .clients__strip.reverse { animation-duration: 38s; }
@@ -167,7 +168,8 @@
 
 /* featured logos on phones: Al Jazeera fills its frame, the rest a step larger */
 @media (max-width: 640px) {
-  .clients__strip.featured .client-logo--aj { padding: 6px 12px !important; }
-  .clients__strip.featured .client-logo--aj img { max-height: 76px !important; height: 76px; }
+  .clients__strip.featured .client-logo { height: 108px; }
+  .clients__strip.featured .client-logo--aj { padding: 4px 12px !important; }
+  .clients__strip.featured .client-logo--aj img { max-height: 100px !important; height: 100px; }
   .clients__strip.featured .client-logo img { max-height: 42px !important; }
 }
