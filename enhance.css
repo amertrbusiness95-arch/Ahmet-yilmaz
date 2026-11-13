@@ -485,3 +485,6 @@ html[lang="ar"] .section__title, html[lang="ar"] .service__title,
 html[lang="ar"] .about__quote, html[lang="ar"] .contact__title {
   font-weight: 900 !important;
 }
+
+/* Arabic: the font's own long kashida (stylistic set 08) on every stretched kaf */
+html[lang="ar"] body { font-feature-settings: "ss08" 1; }
