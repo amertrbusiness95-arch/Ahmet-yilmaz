@@ -154,3 +154,38 @@
   window.addEventListener('resize', onScroll, { passive: true });
   setTimeout(rescue, 400);
 })();
+
+/* Nav: the pressed link stays lit in the site blue */
+(() => {
+  const links = Array.from(document.querySelectorAll('.nav__menu a'));
+  links.forEach(a => a.addEventListener('click', () => {
+    links.forEach(x => x.classList.remove('is-on'));
+    a.classList.add('is-on');
+  }));
+})();
+
+/* Click sound: a short soft "tak" on buttons and links, made in the browser (no file needed) */
+(() => {
+  let ctx = null;
+  const tak = () => {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === 'suspended') ctx.resume();
+      const t = ctx.currentTime;
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(1500, t);
+      o.frequency.exponentialRampToValueAtTime(600, t + 0.06);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.16, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.085);
+      o.connect(g).connect(ctx.destination);
+      o.start(t);
+      o.stop(t + 0.095);
+    } catch (e) {}
+  };
+  document.addEventListener('pointerdown', (e) => {
+    if (e.target.closest && e.target.closest('a, button, .btn, .cico, .nav__menu a')) tak();
+  }, { passive: true });
+})();
