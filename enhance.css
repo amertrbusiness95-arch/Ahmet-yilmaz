@@ -89,12 +89,12 @@
    4 · Size tweaks
    ========================================================================== */
 /* Al Jazeera a touch larger in the featured strip, no glow blur so it stays crisp */
-.clients__strip.featured .client-logo { height: 124px; }
-.clients__strip.featured .client-logo--aj { padding: 4px 14px; }
-.clients__strip.featured .client-logo--aj img { height: 116px; width: auto; max-height: none; filter: none; }
+.clients__strip.featured .client-logo { height: 164px; }
+.clients__strip.featured .client-logo--aj { padding: 3px 10px; }
+.clients__strip.featured .client-logo--aj img { height: 158px; width: auto; max-height: none; filter: none; }
 
 /* strips move a little faster */
-.clients__strip, .clients__strip.reverse { animation-duration: 38s; }
+.clients__strip, .clients__strip.reverse { animation-duration: 19s; }
 
 /* sections grow with their content (inline canvas heights no longer pin them) */
 .clients, .contact { height: auto !important; }
@@ -168,8 +168,8 @@
 
 /* featured logos on phones: Al Jazeera fills its frame, the rest a step larger */
 @media (max-width: 640px) {
-  .clients__strip.featured .client-logo { height: 108px; }
-  .clients__strip.featured .client-logo--aj { padding: 4px 12px !important; }
-  .clients__strip.featured .client-logo--aj img { max-height: 100px !important; height: 100px; }
-  .clients__strip.featured .client-logo img { max-height: 42px !important; }
+  .clients__strip.featured .client-logo { height: 136px; }
+  .clients__strip.featured .client-logo--aj { padding: 3px 10px !important; }
+  .clients__strip.featured .client-logo--aj img { max-height: 130px !important; height: 130px; }
+  .clients__strip.featured .client-logo img { max-height: 48px !important; }
 }
