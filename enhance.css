@@ -200,3 +200,36 @@
   0%   { transform: scale(1);   opacity: 0.9; }
   100% { transform: scale(1.8); opacity: 0; }
 }
+
+/* Marquee: smaller, and each phrase lights up as it crosses the middle of the screen */
+.marquee__track { font-size: clamp(18px, 3vw, 44px) !important; }
+.mq {
+  display: inline-block;
+  color: color-mix(in srgb, var(--cyan) calc(var(--lit, 0) * 100%), var(--ink));
+  text-shadow: 0 0 calc(var(--lit, 0) * 26px) rgba(0, 224, 255, calc(var(--lit, 0) * 0.9));
+  opacity: calc(0.4 + var(--lit, 0) * 0.6);
+}
+.marquee__track .ghost .mq {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 224, 255, calc(0.3 + var(--lit, 0) * 0.7));
+}
+
+/* Logo rows: about one and a half times smaller, and twice as fast */
+.clients .client-logo { width: 133px !important; height: 80px !important; padding: 6px !important; border-radius: 9px !important; }
+.clients .client-logo img { max-width: 100px !important; max-height: 44px !important; }
+.clients .client-logo--aj img { max-width: 60px !important; max-height: 66px !important; }
+.clients__strip,
+.clients__strip.reverse { animation-duration: 5s !important; gap: 12px; }
+
+/* Phones: four logos visible per row */
+@media (max-width: 640px) {
+  .clients__strip,
+  .clients__strip.reverse { gap: 10px !important; }
+  .clients .client-logo {
+    width: calc((100vw - 36px - 30px) / 4) !important;
+    height: calc((100vw - 36px - 30px) / 4 * 0.8) !important;
+    padding: 5px !important;
+  }
+  .clients .client-logo img { max-width: 64px !important; max-height: 46px !important; }
+  .clients .client-logo--aj img { max-width: 38px !important; max-height: 56px !important; }
+}

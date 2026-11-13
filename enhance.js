@@ -48,3 +48,27 @@
   window.addEventListener('resize', onScroll, { passive: true });
   update();
 })();
+
+/* Marquee: each phrase lights up while it crosses the middle of the screen */
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mq = document.querySelector('.marquee');
+  if (!mq) return;
+  const words = Array.from(mq.querySelectorAll('.mq'));
+  let visible = false;
+  new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(mq);
+  function tick() {
+    if (visible) {
+      const vw = window.innerWidth || 1;
+      const mid = vw / 2;
+      for (const w of words) {
+        const r = w.getBoundingClientRect();
+        if (r.right < 0 || r.left > vw) continue;
+        const d = Math.abs(r.left + r.width / 2 - mid) / (vw / 2);
+        w.style.setProperty('--lit', Math.max(0, 1 - d).toFixed(3));
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
