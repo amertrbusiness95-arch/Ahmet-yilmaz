@@ -233,3 +233,46 @@
   .clients .client-logo img { max-width: 64px !important; max-height: 46px !important; }
   .clients .client-logo--aj img { max-width: 38px !important; max-height: 56px !important; }
 }
+
+/* Marquee: twice as fast again, same pace as the logo rows */
+.marquee__track { animation-duration: 10s !important; }
+
+/* Sections sit closer together, no fixed heights */
+section, footer { height: auto !important; }
+.about, .work, .services, .timeline, .clients, .contact {
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+}
+
+/* Logo frames: one and a half times bigger than the last size */
+.clients .client-logo { width: 200px !important; height: 120px !important; padding: 9px !important; border-radius: 12px !important; }
+.clients .client-logo img { max-width: 150px !important; max-height: 66px !important; }
+.clients .client-logo--aj img { max-width: 90px !important; max-height: 100px !important; }
+@media (max-width: 640px) {
+  .clients .client-logo { width: calc((100vw - 36px - 30px) / 4 * 1.5) !important; height: calc((100vw - 36px - 30px) / 4 * 1.2) !important; padding: 7px !important; }
+  .clients .client-logo img { max-width: 100px !important; max-height: 66px !important; }
+  .clients .client-logo--aj img { max-width: 56px !important; max-height: 80px !important; }
+}
+
+/* "Now": crimson pill with a glow and pulse waves */
+.tl-item__highlights .now {
+  background: rgba(255, 36, 64, 0.14);
+  color: #FF3352;
+  border-color: rgba(255, 36, 64, 0.6);
+  box-shadow: 0 0 26px rgba(255, 36, 64, 0.45), inset 0 0 14px rgba(255, 36, 64, 0.12);
+}
+.tl-item__highlights .now .dot { background: #FF2A4A; box-shadow: 0 0 14px #FF2A4A; }
+.tl-item__highlights .now::before,
+.tl-item__highlights .now::after { border-color: rgba(255, 36, 64, 0.75); }
+
+/* Phones: the portrait sits right under the name, then the description */
+@media (max-width: 640px) {
+  .hero__inner { display: flex !important; flex-direction: column; gap: 22px !important; }
+  .hero__copy { display: contents !important; }
+  .hero__meta { order: 0; }
+  .hero__title { order: 1; }
+  .hero__stage { order: 2; }
+  .hero__subline { order: 3; }
+  .hero__bio { order: 4; }
+  .hero__cta { order: 5; }
+}
